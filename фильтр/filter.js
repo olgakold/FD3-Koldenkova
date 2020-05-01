@@ -78,7 +78,7 @@ var Filter = React.createClass({
 
         var optionsCode=[];
         this.state.lines.map (function(i){ 
-            var optionCode=React.DOM.option ({className:'OptionFilter', hidden:!i.isInputText},i.nameLine)            
+            var optionCode=React.DOM.option ({className:'OptionFilter', hidden:!i.isInputText, key:i.code},i.nameLine)            
             optionsCode.push(optionCode)     
         })
 
