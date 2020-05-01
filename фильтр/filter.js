@@ -20,6 +20,7 @@ var Filter = React.createClass({
           count: 1,
           lines: this.props.lines,
           isChecked: false,
+          value: '',
         };
       },
 
@@ -29,7 +30,6 @@ var Filter = React.createClass({
        this.state.lines.map (i=> {
            if (i.nameLine.indexOf(InputText)==-1) {
             i.isInputText=false;   
-            this.setState({})
        }
        }
        )       
@@ -45,7 +45,7 @@ var Filter = React.createClass({
                 return 0;
               }
             this.state.lines.sort(compareNameLine)
-            this.setState({})  
+
         }
         else {
             this.setState({isChecked:false});
@@ -53,7 +53,7 @@ var Filter = React.createClass({
                 return a.code-b.code;
             }
             this.state.lines.sort(compareCode)
-            this.setState({})  
+ 
         }      
         
 
