@@ -1,1 +1,37 @@
 
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Магазин мороженого</title>
+</head> 
+<body> 
+  <div id="container"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
+  <script src="ishop2.js"></script>
+  <script src="Products.js"></script>
+  <link rel="stylesheet" type="text/css" href="ishop2.css" />
+
+  <script>
+
+    var nameStore='Мороженое на любой вкус';
+    var icesArr=[ 
+      {nameice:'"Каштан"',code:1,price: '3',url: 'https://snegoviki2.by/wp-content/uploads/2018/10/Kashtan-1-e1540461598673-200x200.png' , count:2}, 
+      {nameice:'"Валошка"',code:2,price: '3,5',url: 'https://www.belta.by/uploads/lotus/news/000022_FAA08D4F6DDB5DA6432583F90030191A_494953.jpg', count:1},
+      {nameice:'"Пломбир на сливках"',code:3,price: '2',url: 'https://interfax.by/files/2017-08/1228276-030927-39x231995.jpg',count:9},
+      {nameice:'"Моя Аленка"',code:4,price: '8',url: 'https://pakupnik.by/image/offercard/000288373',count:10},
+      {nameice:'"Soletto"',code:5,price: '3',url: 'https://kaktutzhit.by/uploads/images/2018/01.06/24-24(1).jpg',count:1},
+    ];
+
+    ReactDOM.render(
+      React.createElement(IShop,{name:nameStore,products:icesArr}), 
+      document.getElementById('container') 
+    );
+
+  </script>
+
+</body> 
+</html>
