@@ -3,30 +3,16 @@ var Products=React.createClass ({
     displayName: 'Products',
 
     render: function (){
-        var icesCode=[];
-        var titleTab=React.DOM.tr({ },        
-          React.DOM.td({className:'titleName'},'Name'),
-          React.DOM.td({className:'titlePriceIce'},'Price'),
-          React.DOM.td({className:'titleURLIce', }, 'URL'),
-          React.DOM.td({className:'titleCount'},'Quantity'),
-          React.DOM.td({className:'titleControl'},'Control'),      
-          ) 
-          icesCode.push(titleTab);
-  
-  
-        this.props.products.forEach(function(i){
-            
-              var iceCode=React.DOM.tr({ },        
-                  React.DOM.td({className:'NameIce'},i.nameice),
-                  React.DOM.td({className:'PriceIce'},i.price),
-                  React.DOM.td({className:'URLIce', }, React.DOM.a({className:'URLIce', href: i.url, target:'_blank'}, 'фото товара')),
-                  React.DOM.td({className:'Count'},i.count),  
-                  React.DOM.td({className:'Control'}, React.DOM.input({className:'buttonControl', type:'button', value:'Delete'})) 
-                  )            
-                  icesCode.push(iceCode);  
-        })  
+    
 
-        return React.DOM.table( {}, React.DOM.tbody ({className:'Products'},icesCode) )
+
+        return React.DOM.tr({key:this.props.code,className:'Product'},   
+        React.DOM.td({className:'NameIce'},this.props.nameice),
+        React.DOM.td({className:'PriceIce'},this.props.price),
+        React.DOM.td({className:'URL'}, React.DOM.a({className:'URLIce', href:this.props.url, target:'_blank'}, this.props.foto)),
+        React.DOM.td({className:'Count'},this.props.count),
+        React.DOM.td({className:'dfdf'}, React.DOM.input({className:'dsaw',type:'button', value:'Delete'},))
+      );
 
     },
 })
