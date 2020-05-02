@@ -5,7 +5,6 @@ var Filter = React.createClass({
     
     propTypes: {
         nameBut: React.PropTypes.string.isRequired,
-        count: React.PropTypes.number,
         lines: React.PropTypes.arrayOf(
             React.PropTypes.shape({
                 code: React.PropTypes.number.isRequired,
@@ -17,7 +16,6 @@ var Filter = React.createClass({
 
     getInitialState: function() {
         return { 
-          count: 1,
           lines: this.props.lines,
           isChecked: false,
           value: '',
@@ -26,51 +24,41 @@ var Filter = React.createClass({
 
     InputFilterChange: function (EO){
        var InputText=EO.target.value;
-       this.setState({value:InputText})
-       this.state.lines.map (i=> {
-           if (i.nameLine.indexOf(InputText)==-1) {
-            i.isInputText=false;   
-       }
-       }
-       )       
+       this.setState({value:InputText})       
+       let NewStateArr=this.state.lines.filter( i=> i.nameLine.indexOf(InputText)!=-1 )
+       this.setState({lines:NewStateArr})
+         
     },
     
-    Alphabet: function (){
-        this.setState({count:this.state.count+1});
-        if (this.state.count%2==1){
-            this.setState({isChecked:true});
-            function compareNameLine(a,b) {
-                if ( a.nameLine<b.nameLine )  return -1;
-                if ( a.nameLine>b.nameLine )  return 1;
-                return 0;
-              }
-            this.state.lines.sort(compareNameLine)
-
-        }
-        else {
-            this.setState({isChecked:false});
-            function compareCode(a,b){
-                return a.code-b.code;
-            }
-            this.state.lines.sort(compareCode)
- 
-        }      
-        
+    Alphabet: function (EO){    
+    this.setState({isChecked:EO.target.checked});
+    let NewStateArr=this.state.lines.slice();
+    if (!this.state.isChecked){
+        function compareNameLine(a,b) {
+            if ( a.nameLine<b.nameLine )  return -1;
+            if ( a.nameLine>b.nameLine )  return 1;
+            return 0;
+          }
+        NewStateArr.sort(compareNameLine)
+      }
+    else{        
+        function compareCode(a,b){
+            return a.code-b.code;   }
+        NewStateArr.sort(compareCode)
+    }
+    this.setState({lines:NewStateArr})
 
     },
         
     ResetAll: function (){
-        this.setState({count:1});
         this.setState({isChecked:false});
-        this.state.lines.map (i=> { 
-             i.isInputText=true; 
-        }
-        )  
-        function compareCode(a,b){
-            return a.code-b.code;
-        }
         this.setState({value:''})
-        this.state.lines.sort(compareCode)
+        let NewStateArr=this.props.lines.slice();        
+        function compareCode(a,b){
+            return a.code-b.code;        }        
+        NewStateArr.sort(compareCode)
+        this.setState({lines:NewStateArr})
+
     },    
    
 
