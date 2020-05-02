@@ -24,10 +24,10 @@ var Filter = React.createClass({
 
     InputFilterChange: function (EO){
        var InputText=EO.target.value;
-       this.setState({value:InputText})       
-       let NewStateArr=this.state.lines.filter( i=> i.nameLine.indexOf(InputText)!=-1 )
-       this.setState({lines:NewStateArr})
-         
+       this.setState({value:InputText})  
+       let NewStateArr=this.props.lines.filter( i=> i.nameLine.indexOf(InputText)!=-1 )
+       this.setState({lines:NewStateArr}, )  
+      
     },
     
     Alphabet: function (EO){    
