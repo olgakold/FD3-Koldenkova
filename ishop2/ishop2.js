@@ -9,7 +9,16 @@ var IShop = React.createClass({
   ); 
     return React.DOM.div( {className:'IShop'}, 
     React.DOM.div( {className:'NameStore'}, this.props.name ),
-    React.DOM.table ({className:'df'},React.DOM.tbody({className:'xcx'}, icesCode)),
+    React.DOM.table ({className:'TableProd'},React.DOM.tbody({className:'TbodyProd'}, 
+    React.DOM.tr({key:this.props.code,className:'TitleProduct'},   
+        React.DOM.td({className:'TitleNameIce'},'Name'),
+        React.DOM.td({className:'TitlePriceIce'},'Price'),
+        React.DOM.td({className:'TitleURL'}, 'URL'),
+        React.DOM.td({className:'TitleCount'},'Quantity'),
+        React.DOM.td({className:'TitleIShopButton'}, 'Control')
+      ),   
+    
+    icesCode)),
   );
 },
   
