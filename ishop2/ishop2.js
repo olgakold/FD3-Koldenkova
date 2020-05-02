@@ -2,10 +2,26 @@ var IShop = React.createClass({
 
   displayName: 'IShop',
 
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    products: React.PropTypes.array.isRequired,
+  },
+
+  getInitialState: function() {
+    return { 
+      isSelectedLineCode: 0,
+      
+    };
+  },
+
+  SelectedLine: function(code){
+    this.setState({isSelectedLineCode:code})
+  },
+
   render: function() {  
 
     var icesCode=this.props.products.map( i =>
-    React.createElement(Products, {key:i.code, nameice:i.nameice, price:i.price, count:i.count, url:i.url, foto:i.foto} )
+    React.createElement(Products, {key:i.code, code:i.code, nameice:i.nameice, price:i.price, count:i.count, url:i.url, foto:i.foto,cbSelected:this.SelectedLine, isSelected:(this.state.isSelectedLineCode==i.code)} )
   ); 
     return React.DOM.div( {className:'IShop'}, 
     React.DOM.div( {className:'NameStore'}, this.props.name ),
