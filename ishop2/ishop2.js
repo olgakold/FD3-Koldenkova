@@ -28,6 +28,7 @@ var IShop = React.createClass({
   },
 
 deleteProduct: function (){
+  
   var question=confirm('Вы хотите удалить этот товар?')
     alert (question)
     if (question==true){
