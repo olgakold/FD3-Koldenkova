@@ -11,6 +11,7 @@ var IShop = React.createClass({
     return { 
       isSelectedLineCode: 0,
       products: this.props.products,
+      isDelLineCode: 0,
       
     };
   },
@@ -22,18 +23,18 @@ var IShop = React.createClass({
   },
 
   DeleteLine: function (code){
-    this.setState({isSelectedLineCode:code}, )
-    var question=confirm('Вы хотите удалить этот товар?')
-    alert (question)
-    if (question==true){
-    let NewStateArr=this.state.products.filter( i=> this.state.isSelectedLineCode!=i.code )
-    this.setState({products:NewStateArr}, ) 
-    }
-     
-
+    this.setState({isDeleteLineCode:code}, this.deleteProduct)
+   
   },
 
-
+deleteProduct: function (){
+  var question=confirm('Вы хотите удалить этот товар?')
+    alert (question)
+    if (question==true){
+    let NewStateArr=this.state.products.filter( i=> this.state.isDeleteLineCode!=i.code )
+    this.setState({products:NewStateArr}, ) 
+    }
+},
 
 
   render: function() {  
@@ -57,4 +58,3 @@ var IShop = React.createClass({
 },
   
 });
-
