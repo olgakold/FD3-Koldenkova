@@ -10,18 +10,37 @@ var IShop = React.createClass({
   getInitialState: function() {
     return { 
       isSelectedLineCode: 0,
+      products: this.props.products,
       
     };
   },
 
   SelectedLine: function(code){
     this.setState({isSelectedLineCode:code})
+    console.log('код выделения: '+this.state.isSelectedLineCode)
+    
   },
+
+  DeleteLine: function (code){
+    this.setState({isSelectedLineCode:code}, )
+    var question=confirm('Вы хотите удалить этот товар?')
+    alert (question)
+    if (question==true){
+      console.log ('yes')
+       let NewStateArr=this.state.products.filter( i=> this.state.isSelectedLineCode!=i.code )
+    this.setState({products:NewStateArr}, ) 
+    }
+     
+
+  },
+
+
+
 
   render: function() {  
 
-    var icesCode=this.props.products.map( i =>
-    React.createElement(Products, {key:i.code, code:i.code, nameice:i.nameice, price:i.price, count:i.count, url:i.url, foto:i.foto,cbSelected:this.SelectedLine, isSelected:(this.state.isSelectedLineCode==i.code)} )
+    var icesCode=this.state.products.map( i =>
+    React.createElement(Products, {key:i.code, code:i.code, nameice:i.nameice, price:i.price, count:i.count, url:i.url, foto:i.foto,cbSelected:this.SelectedLine, isSelected:(this.state.isSelectedLineCode==i.code), cbDelete:this.DeleteLine},  )
   ); 
     return React.DOM.div( {className:'IShop'}, 
     React.DOM.div( {className:'NameStore'}, this.props.name ),
@@ -39,3 +58,4 @@ var IShop = React.createClass({
 },
   
 });
+
