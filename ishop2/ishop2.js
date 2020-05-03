@@ -17,7 +17,7 @@ var IShop = React.createClass({
 
   SelectedLine: function(code){
     this.setState({isSelectedLineCode:code})
-    console.log('код выделения: '+this.state.isSelectedLineCode)
+
     
   },
 
@@ -26,8 +26,7 @@ var IShop = React.createClass({
     var question=confirm('Вы хотите удалить этот товар?')
     alert (question)
     if (question==true){
-      console.log ('yes')
-       let NewStateArr=this.state.products.filter( i=> this.state.isSelectedLineCode!=i.code )
+    let NewStateArr=this.state.products.filter( i=> this.state.isSelectedLineCode!=i.code )
     this.setState({products:NewStateArr}, ) 
     }
      
