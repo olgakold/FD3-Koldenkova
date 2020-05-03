@@ -21,7 +21,11 @@ var Products=React.createClass ({
   },
 
   ButtonClick: function(EO){
-    this.props.cbDelete(this.props.code)
+    if (this.props.isSelected){
+      this.props.cbDelete(this.props.code)
+    }
+    
+    
   },
 
   render: function (){  
