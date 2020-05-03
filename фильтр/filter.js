@@ -24,10 +24,23 @@ var Filter = React.createClass({
 
     InputFilterChange: function (EO){
        var InputText=EO.target.value;
-       this.setState({value:InputText})  
-       let NewStateArr=this.props.lines.filter( i=> i.nameLine.indexOf(InputText)!=-1 )
-       this.setState({lines:NewStateArr}, )  
-      
+       this.setState({value:InputText})
+       if (this.state.isChecked==true){
+        let NewStateArr=this.props.lines.slice();
+        function compareNameLine(a,b) {
+            if ( a.nameLine<b.nameLine )  return -1;
+            if ( a.nameLine>b.nameLine )  return 1;
+            return 0;
+          }
+             
+       let NewStateArrFilter =NewStateArr.sort(compareNameLine).filter( i=> i.nameLine.indexOf(InputText)!=-1 )
+       this.setState({lines:NewStateArrFilter}, )  
+       }
+
+       else{
+        let NewStateArrFilter =this.props.lines.filter( i=> i.nameLine.indexOf(InputText)!=-1 )
+        this.setState({lines:NewStateArrFilter}, )  
+       }
     },
     
     Alphabet: function (EO){    
