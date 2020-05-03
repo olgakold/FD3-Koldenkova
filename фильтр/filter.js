@@ -25,7 +25,7 @@ var Filter = React.createClass({
     InputFilterChange: function (EO){
        var InputText=EO.target.value;
        this.setState({value:InputText})
-       if (this.state.isChecked==true){
+       if (this.state.isChecked){
         let NewStateArr=this.props.lines.slice();
         function compareNameLine(a,b) {
             if ( a.nameLine<b.nameLine )  return -1;

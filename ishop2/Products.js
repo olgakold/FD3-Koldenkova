@@ -11,6 +11,8 @@ var Products=React.createClass ({
       url: React.PropTypes.string.isRequired,
       foto: React.PropTypes.string.isRequired,
       count: React.PropTypes.number.isRequired,
+      cbDelete: React.PropTypes.func.isRequired,
+      cbSelected: React.PropTypes.func.isRequired,
   },
 
 
@@ -20,12 +22,8 @@ var Products=React.createClass ({
     this.props.cbSelected(this.props.code);      
   },
 
-  ButtonClick: function(EO){
-    if (this.props.isSelected){
-      this.props.cbDelete(this.props.code)
-    }
-    
-    
+  ButtonClick: function(EO){   
+    this.props.cbDelete(this.props.code)    
   },
 
   render: function (){  
