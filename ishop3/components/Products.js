@@ -23,9 +23,14 @@ class Products extends React.Component {
     
   }
 
-  ButtonClick = (EO) => {   
+  ButtonDeleteClick = (EO) => {   
     this.props.cbDelete(this.props.code)    
   }
+
+  ButtonEditClick = (EO) => {   
+    this.props.cbEdit(this.props.code)    
+  }
+
 
   render (){  
     
@@ -38,8 +43,8 @@ class Products extends React.Component {
           </td>
           <td className='Count'>{this.props.count} </td>
           <td className='IShopButton'>
-            <input className='IShopButEdit'type='button' value='Edit'></input>
-            <input className='IShopButDelete'type='button' value='Delete' onClick={this.ButtonClick}></input>
+            <input className='IShopButEdit'type='button' value='Edit' onClick={this.ButtonEditClick}></input>
+            <input className='IShopButDelete'type='button' value='Delete' onClick={this.ButtonDeleteClick}></input>
           </td>
         </tr>
       )
