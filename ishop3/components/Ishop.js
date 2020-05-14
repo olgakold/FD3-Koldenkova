@@ -4,29 +4,27 @@ import PropTypes from 'prop-types';
 import './Ishop.css';
 
 import Products from './Products';
-
+import IceCard from './IceCard';
 
 class Ishop extends React.Component {
 
   static propTypes = {
     name: PropTypes.string.isRequired,
     products: PropTypes.array.isRequired,
+    isSelectedLineCode: PropTypes.number,
+    isSelectedIce: PropTypes.bool
   }
 
   state = {
-    products: this.props.products
+    products: this.props.products,
+    isSelectedIce: false
   }
 
-  getInitialState = () => {
-    return { 
-      isSelectedLineCode: 0,
-      products: this.props.products,
-           
-    };
-  }
+
 
   SelectedLine= (code) => {
-    this.setState({isSelectedLineCode:code})    
+    this.setState({isSelectedLineCode:code}) 
+    this.setState({isSelectedIce: true})     
   }
 
   DeleteLine = (code) => {
@@ -44,6 +42,7 @@ class Ishop extends React.Component {
 
   render () {  
 
+    
     var icesCode=this.state.products.map( i =>
     <Products key={i.code}
     code={i.code}
@@ -55,8 +54,10 @@ class Ishop extends React.Component {
     cbSelected={this.SelectedLine}
     isSelected={this.state.isSelectedLineCode==i.code}
     cbDelete={this.DeleteLine}
-  /> )
+    /> )
 
+    let iceCardArr=this.state.products.filter(i => this.state.isSelectedLineCode==i.code)
+    
     return (
       <div  className='IShop'>
         <div className='NameStore'>{this.props.name}</div>
@@ -69,9 +70,25 @@ class Ishop extends React.Component {
               <td  className='TitleQuantity'>Quantity</td>
               <td  className='TitleControl'>Control</td>
             </tr>
-            {icesCode}
-          </tbody>
+            {icesCode}               
+          </tbody>           
         </table>
+        <input className='IShopButNew'type='button' value='New product'></input>
+        {      
+        (this.state.isSelectedIce)&&
+        <IceCard  
+          nameice={iceCardArr[0].nameice} 
+          price={iceCardArr[0].price} 
+          url={iceCardArr[0].url} 
+          count={iceCardArr[0].count} 
+          foto={iceCardArr[0].foto} 
+           
+        />
+
+        
+
+        }
+        
       </div>
     )
 
