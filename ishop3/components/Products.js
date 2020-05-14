@@ -19,15 +19,16 @@ class Products extends React.Component {
   }
 
   LineClick = (EO) => {
-    this.props.cbSelected(this.props.code);      
+    this.props.cbSelected(this.props.code);  
+    
   }
 
   ButtonClick = (EO) => {   
     this.props.cbDelete(this.props.code)    
-  },
+  }
 
   render (){  
-
+    
       return (
         <tr key={this.props.code} className='Product' onClick={this.LineClick} style={{backgroundColor: this.props.isSelected?'orange':'white'}}>
           <td className='NameIce'>{this.props.nameice}</td>
@@ -37,11 +38,11 @@ class Products extends React.Component {
           </td>
           <td className='Count'>{this.props.count} </td>
           <td className='IShopButton'>
-            <input className='IShopBut'type='button' value='Delete' onClick={this.ButtonClick}></input>
+            <input className='IShopButEdit'type='button' value='Edit'></input>
+            <input className='IShopButDelete'type='button' value='Delete' onClick={this.ButtonClick}></input>
           </td>
         </tr>
       )
       }
     }
     export default Products;
-
