@@ -1,20 +1,27 @@
-.EditCard div {
-    clear: both;
-    text-align: right;
+  
+.NameError {
+    display: block;
+    float: right;
+    width: 150px;
+ 
 }
 
 .EditId {
-    float: left;
+    clear: both;
     font-weight: bold;
 }
 
-.EditCard div input {
-    width: 200px;
+.EditCard input {
+    d
+    width: 150px;
 }
 .EditCard label { 
+    display: block;
     float: left;
+    width: 100px;
 }
 
 .EditCard {
-    width: 300px;
+    display: block;
+    width: 425px;
 }
