@@ -5,6 +5,7 @@ import './Ishop.css';
 
 import Products from './Products';
 import IceCard from './IceCard';
+import EditCard from './EditCard';
 
 class Ishop extends React.Component {
 
@@ -12,33 +13,40 @@ class Ishop extends React.Component {
     name: PropTypes.string.isRequired,
     products: PropTypes.array.isRequired,
     isSelectedLineCode: PropTypes.number,
-    isSelectedIce: PropTypes.bool
+    isEdit: PropTypes.bool
   }
 
   state = {
     products: this.props.products,
-    isSelectedIce: false
+   
   }
-
+  
 
 
   SelectedLine= (code) => {
-    this.setState({isSelectedLineCode:code}) 
-    this.setState({isSelectedIce: true})     
+    this.setState({isSelectedLineCode:code, isEdit: false}) 
+    
   }
 
-  DeleteLine = (code) => {
-    this.setState({isSelectedLineCode:code})
-    var question=confirm('Вы хотите удалить этот товар?')  
-    alert (question)
+  DeleteLine = (code) => {    
+    this.setState({isSelectedLineCode:code})      
+    let question=confirm('Вы хотите удалить этот товар?')
     if (question==true){
-    let NewStateArr=this.state.products.filter( i=> code!=i.code )
-    this.setState({products:NewStateArr}, ) 
-  
-    }
+      let NewStateArr=this.state.products.filter( i=> code!=i.code )    
+      this.setState({products:NewStateArr}, ) 
       
-    }  
+    }     
+  }
 
+
+   EditLine = (code) => {
+    this.setState({isSelectedLineCode:code},this.EditIce)
+   
+   }
+
+   EditIce = ()=>{
+    this.setState({isEdit:true})
+   }
 
   render () {  
 
@@ -54,9 +62,11 @@ class Ishop extends React.Component {
     cbSelected={this.SelectedLine}
     isSelected={this.state.isSelectedLineCode==i.code}
     cbDelete={this.DeleteLine}
+    cbEdit={this.EditLine}
     /> )
 
     let iceCardArr=this.state.products.filter(i => this.state.isSelectedLineCode==i.code)
+ 
     
     return (
       <div  className='IShop'>
@@ -74,21 +84,19 @@ class Ishop extends React.Component {
           </tbody>           
         </table>
         <input className='IShopButNew'type='button' value='New product'></input>
-        {      
-        (this.state.isSelectedIce)&&
-        <IceCard  
-          nameice={iceCardArr[0].nameice} 
-          price={iceCardArr[0].price} 
-          url={iceCardArr[0].url} 
-          count={iceCardArr[0].count} 
-          foto={iceCardArr[0].foto} 
-           
-        />
-
         
-
+        { ((iceCardArr.length>0)&&(!this.state.isEdit))&&      
+          <IceCard  
+            icesCard={iceCardArr}
+          /> 
         }
-        
+        {((iceCardArr.length>0)&&(this.state.isEdit))&&      
+          <EditCard  
+            icesCard={iceCardArr}
+          /> 
+        }
+
+
       </div>
     )
 
