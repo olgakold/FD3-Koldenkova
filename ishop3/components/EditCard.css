@@ -1,0 +1,20 @@
+.EditCard div {
+    clear: both;
+    text-align: right;
+}
+
+.EditId {
+    float: left;
+    font-weight: bold;
+}
+
+.EditCard div input {
+    width: 200px;
+}
+.EditCard label { 
+    float: left;
+}
+
+.EditCard {
+    width: 300px;
+}
