@@ -13,6 +13,10 @@ class Ishop extends React.Component {
     products: PropTypes.array.isRequired,
   }
 
+  state = {
+    products: this.props.products
+  }
+
   getInitialState = () => {
     return { 
       isSelectedLineCode: 0,
@@ -65,7 +69,7 @@ class Ishop extends React.Component {
               <td  className='TitleQuantity'>Quantity</td>
               <td  className='TitleControl'>Control</td>
             </tr>
-            <tr>{icesCode}</tr>
+            {icesCode}
           </tbody>
         </table>
       </div>
