@@ -1,8 +1,9 @@
   
-.NameError {
+  
+.Error {
     display: block;
     float: right;
-    width: 150px;
+    
  
 }
 
@@ -11,17 +12,20 @@
     font-weight: bold;
 }
 
-.EditCard input {
-    d
+.EditCard label+input {    
     width: 150px;
 }
 .EditCard label { 
     display: block;
     float: left;
-    width: 100px;
+    width: 55px;
 }
 
 .EditCard {
     display: block;
-    width: 425px;
+  
+    
+}
+.Error {
+    color: red;
 }
