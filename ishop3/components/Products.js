@@ -16,11 +16,14 @@ class Products extends React.Component {
       count: PropTypes.number.isRequired,
       cbDelete: PropTypes.func.isRequired,
       cbSelected: PropTypes.func.isRequired,
+      isChange: PropTypes.bool.isRequired,
+      
   }
 
   LineClick = (EO) => {
-    this.props.cbSelected(this.props.code);  
-    
+    if (!this.props.isChange){
+      this.props.cbSelected(this.props.code); 
+    }    
   }
 
   ButtonDeleteClick = (EO) => {   
@@ -43,8 +46,8 @@ class Products extends React.Component {
           </td>
           <td className='Count'>{this.props.count} </td>
           <td className='IShopButton'>
-            <input className='IShopButEdit'type='button' value='Edit' onClick={this.ButtonEditClick}></input>
-            <input className='IShopButDelete'type='button' value='Delete' onClick={this.ButtonDeleteClick}></input>
+            <input className='IShopButEdit'type='button' value='Edit' onClick={this.ButtonEditClick} disabled={this.props.isChange}></input>
+            <input className='IShopButDelete'type='button' value='Delete' onClick={this.ButtonDeleteClick} disabled={this.props.isChange}></input>
           </td>
         </tr>
       )
