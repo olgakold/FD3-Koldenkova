@@ -84,12 +84,12 @@ SaveCard = () =>{
   this.props.cbSave(this.state)
   var NewArrIce=this.props.icesCard
   this.state.nameIsChanged?NewArrIce[0].nameice=this.state.nameIsChanged:NewArrIce[0].nameice=this.props.icesCard[0].nameice;
-  this.state.priceIsChanged?NewArrIce[0].price=this.state.priceIsChanged:NewArrIce[0].price=this.props.icesCard[0].price;
+  this.state.priceIsChanged?NewArrIce[0].price=Number(this.state.priceIsChanged):NewArrIce[0].price=this.props.icesCard[0].price;
   this.state.urlIsChanged?NewArrIce[0].url=this.state.urlIsChanged:NewArrIce[0].url=this.props.icesCard[0].url;
-  this.state.countIsChanged?NewArrIce[0].count=this.state.countIsChanged:NewArrIce[0].count=this.props.icesCard[0].count;
+  this.state.countIsChanged?NewArrIce[0].count=parseInt(this.state.countIsChanged):NewArrIce[0].count=this.props.icesCard[0].count;
 }
 AddCard = () =>{
-  var NewArrIce={key:this.props.iceCode+1, code:this.props.iceCode+1,nameice:this.state.nameIsChanged, price:this.state.priceIsChanged, count:this.state.countIsChanged,url:this.state.urlIsChanged, foto:'фото товара'}
+  var NewArrIce={key:this.props.iceCode+1, code:this.props.iceCode+1,nameice:this.state.nameIsChanged, price:Number(this.state.priceIsChanged), count:parseInt(this.state.countIsChanged),url:this.state.urlIsChanged, foto:'фото товара'}
   this.props.cbNewIce(NewArrIce)
   
 }
@@ -99,7 +99,6 @@ CancelCard = () =>{
 }
 
 render (){
-     console.log (this.state.nameErrorText)
     if (this.props.workMode==1){
 
     return ( 
