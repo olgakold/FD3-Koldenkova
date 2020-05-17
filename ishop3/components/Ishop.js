@@ -70,7 +70,7 @@ class Ishop extends React.Component {
    }
 
    SaveCard = () =>{
-     this.setState({isChange:false})
+     this.setState({isChange:false, workMode:0})
    }
 
    CancelCard = () =>{
