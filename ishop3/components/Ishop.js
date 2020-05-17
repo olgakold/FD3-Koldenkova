@@ -79,15 +79,13 @@ class Ishop extends React.Component {
 
    NewIce = () =>{
      this.setState({workMode:2,isValidName:false, nameErrorText: 'Please, fill the field',isValidPrice:false, priceErrorText: 'Please, fill the field.Value must be a number',isValidURL:false, urlErrorText: 'Please, fill the field.',isValidCount:false, countErrorText: 'Please, fill the field.Value must be a number'})
-     console.log (this.state)
+ 
    }
 
     AddIce = (NewArrIce) =>{
     var NewArr=this.state.products.slice()
     var NewArrIces=NewArr.push(NewArrIce)
     this.setState({products:NewArr, isChange:false, workMode:0, isInfo:false})
-    console.log (NewArr)
-
     
   }
 
