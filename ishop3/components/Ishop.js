@@ -84,7 +84,7 @@ class Ishop extends React.Component {
 
     AddIce = (NewArrIce) =>{
     var NewArr=this.state.products.slice()
-    var NewArrIces=NewArr.push(NewArrIce)
+    NewArr.push(NewArrIce)
     this.setState({products:NewArr, isChange:false, workMode:0, isInfo:false})
     
   }
