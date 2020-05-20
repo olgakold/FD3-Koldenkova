@@ -22,7 +22,6 @@ class BR2JSX extends React.Component {
        
     }
     
-    NewArr.push(<br />)
     
     return(
       <div className='BR2JSX' style={{backgroundColor: "olive"}}>
