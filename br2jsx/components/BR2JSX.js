@@ -14,7 +14,7 @@ class BR2JSX extends React.Component {
     var items=this.props.text.split(/<br ?\/?>/)
     for (var i=0; i<items.length; i++){       
        if (i!=items.length-1){
-        NewArr.push(items[i], <br />)
+        NewArr.push(items[i], <br key={i}/>)
        }
        else{
          NewArr.push(items[i] )
