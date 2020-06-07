@@ -89,25 +89,15 @@ class MobileCompany extends React.PureComponent {
     this.setState({clients:this.props.clients})
   }
   
-  activeClients =()=>{
-    let newArr=[]
-    this.props.clients.forEach(element => {
-      if (element.balance>0){
-        newArr.push(element)
-      }
-    })   
-    console.log (newArr)  
+   activeClients =()=>{
+    let newArr=this.props.clients.filter(i=>i.balance>0)   
    this.setState({clients:newArr})
+
   }
 
+
   blockClients =()=>{
-    let newArr=[]
-    this.props.clients.forEach(element => {
-      if (element.balance<0){
-        newArr.push(element)
-      }
-    })   
-    console.log (newArr)  
+    let newArr=this.props.clients.filter(i=>i.balance<0)   
    this.setState({clients:newArr})
   }
 
