@@ -32,7 +32,7 @@ class MobileCompany extends React.PureComponent {
     clients: this.props.clients,
     workMode: 0,
     editClient: 0,
-    key: this.props.clients.length-1,
+    key: this.props.clients.length+1,
    }
 
   
@@ -66,13 +66,14 @@ class MobileCompany extends React.PureComponent {
     if (this.state.workMode==1){
       let index=this.state.clients.findIndex(clients=>clients.id===newCl.id)
       newArr[index]=newCl
+      
    }
    
       if (this.state.workMode==2){
        newArr.push(newCl)
       } 
    
-    this.setState({clients:newArr, workMode: 0, key:this.state.clients.length})
+    this.setState({clients:newArr, workMode: 0, key:this.state.key+1})
   }
 
   cancelInfo = () =>{
@@ -89,7 +90,7 @@ class MobileCompany extends React.PureComponent {
     this.setState({clients:this.props.clients})
   }
   
-   activeClients =()=>{
+  activeClients =()=>{
     let newArr=this.props.clients.filter(i=>i.balance>0)   
    this.setState({clients:newArr})
 
@@ -158,4 +159,3 @@ class MobileCompany extends React.PureComponent {
 }
 
 export default MobileCompany;
-
