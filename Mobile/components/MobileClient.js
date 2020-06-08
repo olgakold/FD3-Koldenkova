@@ -33,7 +33,7 @@ class MobileClient extends React.PureComponent {
   }
 
   componentWillReceiveProps = (newProps) => {
-    his.setState({info:newProps.info});
+    this.setState({info:newProps.info});
   };
 
   render() {
