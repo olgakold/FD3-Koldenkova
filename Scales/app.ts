@@ -9,16 +9,16 @@ class Scales {
     add (_product:Product):void {
         this.products.push (_product)
     }
-    getSumScale ():void {
+    getSumScale ():number {
         let sumWeight:number=0
-        this.products.map (i=>sumWeight=sumWeight+i.getScale())  
-        console.log (sumWeight)        
+        this.products.forEach ((i:Product)=> {sumWeight=sumWeight+i.getScale()})
+        return sumWeight       
      }
 
-    getNameList ():void {
+    getNameList ():Array<string> {
         let nameList:Array<string>=[]
-        this.products.map (i=>nameList.push(i.getName()))      
-        console.log (nameList)
+        this.products.forEach ((i:Product)=> {nameList.push(i.getName())})      
+        return nameList
     }
  }
 
@@ -68,5 +68,5 @@ scales1.add (app3)
 scales1.add (tom1)
 scales1.add (tom2)
 
-scales1.getSumScale ()
-scales1.getNameList ()
+console.log (scales1.getSumScale ())
+console.log (scales1.getNameList ())
