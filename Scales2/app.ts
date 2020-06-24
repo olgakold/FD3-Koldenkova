@@ -1,44 +1,41 @@
 class Scales {    
 
-    products: Array<Product>
+    products: IScalable[]
 
     constructor (){
         this.products=[]  
     }
    
-    add (_product:Product):void {
+    add (_product:IScalable):void {
         this.products.push (_product)
     }
     getSumScale ():number {
         let sumWeight:number=0
-        this.products.forEach ((i:Apple|Tomato)=> {sumWeight=sumWeight+i.getScale()})
+        this.products.forEach ((i:IScalable)=> {sumWeight=sumWeight+i.getScale()})
         return sumWeight       
      }
 
     getNameList ():Array<string> {
         let nameList:Array<string>=[]
-        this.products.forEach ((i:Apple|Tomato)=> {nameList.push(i.getName())})      
+        this.products.forEach ((i:IScalable)=> {nameList.push(i.getName())})      
         return nameList
     }
  }
-
-class Product {
-    
-    name: string
-    weight: number
-
-    constructor(_name:string, _weight:number) {            
-        this.name=_name;
-        this.weight=_weight;
-    }  
-}
 
 interface IScalable{
     getScale (): number;  
     getName (): string 
 }
 
-class Apple extends Product implements IScalable {  
+class Apple implements IScalable {  
+
+    name: string
+    weight: number
+
+    constructor(_name:string, _weight:number) {            
+        this.name=_name;
+        this.weight=_weight;
+    } 
 
     getScale (): number {
         return this.weight
@@ -48,7 +45,14 @@ class Apple extends Product implements IScalable {
          return this.name
      }  
 }
-class Tomato extends Product implements IScalable { 
+class Tomato implements IScalable { 
+    name: string
+    weight: number
+
+    constructor(_name:string, _weight:number) {            
+        this.name=_name;
+        this.weight=_weight;
+    } 
 
     getScale (): number {
         return this.weight
